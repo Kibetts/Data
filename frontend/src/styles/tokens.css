@@ -1,0 +1,64 @@
+:root {
+  /* Color — deep ink base, mint-teal for "go/connected", amber for pending,
+     rust for failed. Kept off M-Pesa's exact green so it reads as its own
+     product, not a clone of the payment brand. */
+  --ink: #0f1e1c;
+  --ink-raised: #16302c;
+  --paper: #f3f4f1;
+  --paper-dim: #c9d0cb;
+  --signal: #2fd6a7;
+  --signal-dim: #1c8a6c;
+  --pending: #f0a83c;
+  --failed: #e2603a;
+  --line: rgba(243, 244, 241, 0.14);
+
+  /* Type — system stacks only. No webfont fetch: the person opening this
+     page usually doesn't have internet yet, which is the whole reason
+     they're here. Monospace carries the data that matters (Mbps, price,
+     voucher); sans carries everything else. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono",
+    Consolas, monospace;
+
+  --radius: 10px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
