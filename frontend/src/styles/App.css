@@ -1,0 +1,342 @@
+.screen {
+  min-height: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  margin-bottom: var(--space-4);
+}
+
+.brand {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--signal);
+  margin: 0 0 var(--space-1);
+}
+
+.tagline {
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0;
+  max-width: 22ch;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: var(--paper-dim);
+  font-size: 14px;
+  padding: 0;
+  margin-bottom: var(--space-4);
+  cursor: pointer;
+  text-align: left;
+}
+
+.back-link:hover {
+  color: var(--paper);
+}
+
+/* ---------- Signal meter ---------- */
+
+.signal-meter {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 32px;
+}
+
+.signal-bar {
+  width: 4px;
+  background: var(--paper-dim);
+  border-radius: 2px;
+  opacity: 0.35;
+}
+
+.signal-bar.is-filled {
+  background: var(--signal);
+  opacity: 1;
+}
+
+.signal-meter.is-pulsing .signal-bar {
+  background: var(--pending);
+  opacity: 0.35;
+  animation: pulse-bar 1.2s ease-in-out infinite;
+}
+
+.signal-meter.is-pulsing .signal-bar:nth-child(1) { animation-delay: 0ms; }
+.signal-meter.is-pulsing .signal-bar:nth-child(2) { animation-delay: 80ms; }
+.signal-meter.is-pulsing .signal-bar:nth-child(3) { animation-delay: 160ms; }
+.signal-meter.is-pulsing .signal-bar:nth-child(4) { animation-delay: 240ms; }
+.signal-meter.is-pulsing .signal-bar:nth-child(5) { animation-delay: 320ms; }
+.signal-meter.is-pulsing .signal-bar:nth-child(6) { animation-delay: 400ms; }
+
+@keyframes pulse-bar {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Plan list ---------- */
+
+.plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.plan-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease;
+}
+
+.plan-row:hover,
+.plan-row:focus-visible {
+  border-color: var(--signal-dim);
+}
+
+.plan-row__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.plan-row__name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.plan-row__meta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--paper-dim);
+  margin: 0;
+}
+
+.plan-row__price {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.plan-row__price span {
+  font-size: 12px;
+  color: var(--paper-dim);
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+.empty-state,
+.error-state {
+  color: var(--paper-dim);
+  font-size: 14px;
+  padding: var(--space-4) 0;
+}
+
+.error-state {
+  color: var(--failed);
+}
+
+/* ---------- Phone form ---------- */
+
+.plan-recap {
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan-recap__name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.plan-recap__meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--paper-dim);
+  margin: 2px 0 0;
+}
+
+.plan-recap__price {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  color: var(--paper-dim);
+  margin-bottom: var(--space-2);
+}
+
+.phone-input {
+  width: 100%;
+  background: var(--ink-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--paper);
+  margin-bottom: var(--space-2);
+}
+
+.phone-input:focus {
+  border-color: var(--signal);
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--paper-dim);
+  margin: 0 0 var(--space-4);
+}
+
+.field-error {
+  font-size: 13px;
+  color: var(--failed);
+  margin: -4px 0 var(--space-3);
+}
+
+.primary-button {
+  width: 100%;
+  background: var(--signal);
+  color: var(--ink);
+  border: none;
+  border-radius: var(--radius);
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary-button:not(:disabled):hover {
+  background: #45e0b7;
+}
+
+.secondary-button {
+  width: 100%;
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.secondary-button:hover {
+  border-color: var(--paper-dim);
+}
+
+/* ---------- Status screens (processing / success / failed) ---------- */
+
+.status-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.status-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 28px;
+}
+
+.status-icon.is-success {
+  background: rgba(47, 214, 167, 0.15);
+  color: var(--signal);
+}
+
+.status-icon.is-failed {
+  background: rgba(226, 96, 58, 0.15);
+  color: var(--failed);
+}
+
+.status-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status-detail {
+  font-size: 14px;
+  color: var(--paper-dim);
+  margin: 0;
+  max-width: 30ch;
+}
+
+.voucher-box {
+  background: var(--ink-raised);
+  border: 1px dashed var(--signal-dim);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.voucher-label {
+  font-size: 12px;
+  color: var(--paper-dim);
+  margin: 0 0 var(--space-1);
+}
+
+.voucher-code {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0;
+  cursor: pointer;
+}
+
+.voucher-copied {
+  font-size: 12px;
+  color: var(--signal);
+  margin: var(--space-2) 0 0;
+}
+
+.voucher-expiry {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--paper-dim);
+  margin: var(--space-3) 0 0;
+}
